@@ -1,0 +1,225 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>México API – Aleff Espinosa Cordova</title>
+  <meta name="description" content="API REST open‑source para consultar Códigos Postales, estados, municipios, ciudades y colonias con búsquedas rápidas y precisas.">
+  <meta name="keywords" content="API, códigos postales, México, estados, municipios, colonias, open source, postal code API">
+  <meta name="author" content="Aleff Espinosa Cordova">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://mexico-api.devaleff.com/">
+  <link rel="icon" href="/favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="México API">
+  <meta property="og:url" content="https://mexico-api.devaleff.com/">
+  <meta property="og:title" content="México API – API abierta de Códigos Postales de México">
+  <meta property="og:description" content="Herramienta open‑source de México para consultar con búsquedas rápidas y precisas Codigos postales, estados, municipios, ciudades o colonias.">
+  <meta property="og:image" content="https://mexico-api.devaleff.com/og-image.png">
+  <meta property="og:image:alt" content="Logo México API">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { montserrat: ['Montserrat', 'sans-serif'] },
+          colors: {
+            'mexico-green': '#006847',
+            'mexico-red': '#CE1126',
+            'mexico-yellow': '#f9db5c',
+            'aleff-azul': '#263a92'
+          }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "México API",
+    "applicationCategory": "API",
+    "operatingSystem": "Web",
+    "url": "https://mexico-api.devaleff.com/",
+    "description": "API REST open‑source para consultar Códigos Postales de México de forma rápida y precisa. Obtén información detallada sobre estados, municipios, ciudades y colonias.",
+    "license": "https://github.com/tu-usuario/mexico-api/blob/main/LICENSE",
+    "creator": {
+      "@type": "Person",
+      "name": "Aleff Espinosa Cordova",
+      "url": "https://devaleff.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mexico-api.devaleff.com/cp/{search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+
+<body class="font-montserrat bg-gray-50 text-gray-900 scroll-smooth">
+  <nav class="fixed top-0 w-full bg-gray-800 text-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="#" class="text-2xl font-extrabold select-none  tracking-wide">
+        <span class="text-mexico-green">MÉ</span><span class="text-white">XI</span><span
+          class="text-mexico-red">CO</span> -&nbsp;API
+      </a>
+      <div class="hidden md:flex space-x-6 text-sm font-semibold">
+        <a href="#features" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Características</a>
+        <a href="#examples" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Ejemplos</a>
+        <a href="#docs" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Documentación</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="h-[75dvh] content-center align-middle max-w-7xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-3 text-gray-800 tracking-wide">MÉXICO API</h1>
+    <h3 class="text-sm font-light mb-3 font-gray-100 transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4"> Por: Aleff Espinosa Cordova</h3>
+    <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Consulta Códigos Postales de México de forma rápida y precisa.
+      Obtén información detallada sobre estados, municipios, ciudades y colonias.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#docs"
+        class="bg-mexico-green text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105">
+        <i class="fa-solid fa-book-open"></i> Documentación
+      </a>
+      <a href="https://github.com/aleff-eco/mexico-api" target="_blank" rel="noopener"
+        class="bg-gray-800 text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+      <a href="https://devaleff.com" target="_blank" rel="noopener"
+        class="bg-aleff-azul text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105">
+        <i class="fa-solid fa-globe"></i> Portafolio
+      </a>
+    </div>
+  </header>
+
+  <section id="features" class="py-24 bg-gray-100">
+    <div class="max-w-[80dvw] mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Características</h2>
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
+          <i class="fa-solid fa-magnifying-glass text-4xl text-mexico-green"></i>
+          <h3 class="text-2xl font-bold">Búsqueda Inteligente</h3>
+          <p class="text-gray-600">Encuentra códigos postales por colonia, ciudad, municipio o estado por coincidencias.</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
+          <i class="fa-solid fa-gauge-high text-4xl text-[#cccccc]"></i>
+          <h3 class="text-2xl font-bold">API REST Rápida</h3>
+          <p class="text-gray-600">Respuestas en milisegundos con datos actualizados a 2025. Con una estructura JSON sencilla.</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
+          <i class="fa-solid fa-code-branch text-4xl text-mexico-red"></i>
+          <h3 class="text-2xl font-bold">100 % Open Source</h3>
+          <p class="text-gray-600">Código abierto. Contribuye al proyecto y ayuda a mejorar los datos.</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
+          <i class="fa-solid fa-bolt text-4xl text-mexico-yellow"></i>
+          <h3 class="text-2xl font-bold">Actualizaciones en un instante</h3>
+          <p class="text-gray-600">Con los Scripts integrados, los datos se actualizan en un instante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples" class="py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ejemplos de Uso</h2>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">Buscar por Código Postal</div>
+          <div class="p-6">
+            <pre class="bg-gray-100 p-4 rounded overflow-x-auto">
+<code>GET https://mexico-api.devaleff.com/api/codigo-postal/06600
+[
+  {
+    "d_codigo": "06600",
+    "d_estado": "Ciudad de México",
+    "d_ciudad": "Ciudad de México",
+    "d_asenta": "Juárez",
+    "D_mnpio": "Cuauhtémoc",
+    "d_tipo_asenta": "Colonia"
+  }
+]
+</code>
+            </pre>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">Buscar por Colonia</div>
+          <div class="p-6">
+            <pre class="bg-gray-100 p-4 rounded overflow-x-auto">
+<code>GET https://mexico-api.devaleff.com/api/colonia/condesa
+[
+  {
+    "d_asenta": "Condesa",
+    "d_tipo_asenta": "Colonia",
+    "D_mnpio": "Cuauhtémoc",
+    "d_estado": "Ciudad de México",
+    "d_ciudad": "Ciudad de México",
+    "d_codigo": "06140"
+  },
+  {
+    "d_asenta": "Hipódromo Condesa",
+    "d_tipo_asenta": "Colonia",
+    "D_mnpio": "Cuauhtémoc",
+    "d_estado": "Ciudad de México",
+    "d_ciudad": "Ciudad de México",
+    "d_codigo": "06170"
+  },
+  {
+    "d_asenta": "Parque Industrial Condesa",
+    "d_tipo_asenta": "Zona industrial",
+    "D_mnpio": "Mexicali",
+    "d_estado": "Baja California",
+    "d_ciudad": "Mexicali",
+    "d_codigo": "21395"
+  }, ...
+]
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="docs" class="bg-mexico-green text-white py-20 text-center h-[60vh] content-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Empezamos?</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Consulta la documentación completa, visita el repositorio y comienza a
+        usar México API hoy
+        mismo.</p>
+      <a href="https://mexico-api.devaleff.com/docs" target="_blank" rel="noopener"
+        class="m-2 bg-white text-mexico-green font-bold py-3 px-8 rounded-lg inline-flex items-center gap-2 transition-transform duration-300 hover:scale-105">
+        <i class="fa-solid fa-book"></i> Ver Documentación
+      </a>
+      <a href="https://github.com/aleff-eco/mexico-api" target="_blank" rel="noopener"
+        class="m-2 bg-white text-mexico-green font-bold py-3 px-8 rounded-lg inline-flex items-center gap-2 transition-transform duration-300 hover:scale-105">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
+    </div>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p>&copy; 2025 México API – Open Source Project</p>
+      <div class="flex space-x-6 text-xl m-2">
+        <a title="GitHub" href="https://github.com/aleff-eco/mexico-api" target="_blank" rel="noopener" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
+            class="fa-brands fa-github"></i></a>
+        <a title="Portafolio Aleff Espinosa Córdova" href="https://devaleff.com" target="_blank" rel="noopener" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
+            class="fa-solid fa-link"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
