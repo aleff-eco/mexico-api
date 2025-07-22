@@ -3,8 +3,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>México API – Aleff Espinosa Cordova</title>
-  <meta name="description" content="API REST open‑source para consultar Códigos Postales, estados, municipios, ciudades y colonias con búsquedas rápidas y precisas.">
-  <meta name="keywords" content="API, códigos postales, México, estados, municipios, colonias, open source, postal code API">
+  <meta name="description"
+    content="API REST open‑source para consultar Códigos Postales, estados, municipios, ciudades y colonias con búsquedas rápidas y precisas.">
+  <meta name="keywords"
+    content="API, códigos postales, México, estados, municipios, colonias, open source, postal code API">
   <meta name="author" content="Aleff Espinosa Cordova">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://mexico-api.devaleff.com/">
@@ -14,13 +16,16 @@
   <meta property="og:site_name" content="México API">
   <meta property="og:url" content="https://mexico-api.devaleff.com/">
   <meta property="og:title" content="México API – API abierta de Códigos Postales de México">
-  <meta property="og:description" content="Herramienta open‑source de México para consultar con búsquedas rápidas y precisas Codigos postales, estados, municipios, ciudades o colonias.">
-  <meta property="og:image" content="https://mexico-api.devaleff.com/og-image.png">
+  <meta property="og:description"
+    content="Herramienta open‑source de México para consultar con búsquedas rápidas y precisas Codigos postales, estados, municipios, ciudades o colonias.">
+  <meta property="og:image" content="/og-image.png">
   <meta property="og:image:alt" content="Logo México API">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    referrerpolicy="no-referrer">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -69,21 +74,31 @@
 <body class="font-montserrat bg-gray-50 text-gray-900 scroll-smooth">
   <nav class="fixed top-0 w-full bg-gray-800 text-white shadow-md z-50">
     <div class="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
-      <a href="#" class="text-2xl font-extrabold select-none  tracking-wide">
+      <a href="#" class="text-2xl font-extrabold select-none flex items-center">
+        <img src="/og-image.png" alt="Logo México API" class="h-10 pr-2">
         <span class="text-mexico-green">MÉ</span><span class="text-white">XI</span><span
-          class="text-mexico-red">CO</span> -&nbsp;API
+          class="text-mexico-red">CO</span>-&nbsp;API
       </a>
       <div class="hidden md:flex space-x-6 text-sm font-semibold">
-        <a href="#features" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Características</a>
-        <a href="#examples" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Ejemplos</a>
-        <a href="#docs" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Documentación</a>
+        <a href="#features"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Características</a>
+        <a href="#address"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Formulario</a> 
+        <a href="#examples"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Ejemplos</a>
+        <a href="#docs"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Documentación</a>
+
       </div>
     </div>
+    <div class="w-full h-2 bg-mexico-green/[.55]"></div>
   </nav>
 
-  <header class="h-[75dvh] content-center align-middle max-w-7xl mx-auto px-4 text-center">
+  <header class="h-[80vh] content-center align-middle max-w-7xl mx-auto px-4 text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-3 text-gray-800 tracking-wide">MÉXICO API</h1>
-    <h3 class="text-sm font-light mb-3 font-gray-100 transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4"> Por: Aleff Espinosa Cordova</h3>
+    <h3
+      class="text-sm font-light mb-3 font-gray-100 transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4">
+      Por: Aleff Espinosa Cordova</h3>
     <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Consulta Códigos Postales de México de forma rápida y precisa.
       Obtén información detallada sobre estados, municipios, ciudades y colonias.</p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -109,12 +124,14 @@
         <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
           <i class="fa-solid fa-magnifying-glass text-4xl text-mexico-green"></i>
           <h3 class="text-2xl font-bold">Búsqueda Inteligente</h3>
-          <p class="text-gray-600">Encuentra códigos postales por colonia, ciudad, municipio o estado por coincidencias.</p>
+          <p class="text-gray-600">Encuentra códigos postales por colonia, ciudad, municipio o estado por coincidencias.
+          </p>
         </div>
         <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
           <i class="fa-solid fa-gauge-high text-4xl text-[#cccccc]"></i>
           <h3 class="text-2xl font-bold">API REST Rápida</h3>
-          <p class="text-gray-600">Respuestas en milisegundos con datos actualizados a 2025. Con una estructura JSON sencilla.</p>
+          <p class="text-gray-600">Respuestas en milisegundos con datos actualizados a 2025. Con una estructura JSON
+            sencilla.</p>
         </div>
         <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
           <i class="fa-solid fa-code-branch text-4xl text-mexico-red"></i>
@@ -130,9 +147,92 @@
     </div>
   </section>
 
-  <section id="examples" class="py-20">
+  <section id="address" class="py-24">
+    <div class="max-w-lg mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">Formulario de pruebas</h2>
+      <div class="rounded-2xl border border-gray-200 bg-white/90 backdrop-blur shadow-xl p-10">
+        <p class="text-center text-gray-600 font-semibold mb-6">MÉXCIO API</p>
+        <form class="grid gap-8">
+          <div class="relative">
+            <input id="cp" type="text" minlength="5" maxlength="5" pattern="[0-9]{5}" required
+              class="peer w-full rounded-lg border border-gray-300 px-4 py-3 placeholder-transparent focus:border-mexico-green focus:ring-0"
+              placeholder="06600">
+            <label for="cp"
+              class="absolute font-semibold left-4 -top-2.5 bg-white px-1 text-xs text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-mexico-green">Código Postal</label>
+          </div>
+
+          <div class="relative">
+            <input id="estado" type="text" readonly
+              class="peer w-full rounded-lg border border-dashed border-gray-300 bg-transparent px-4 py-3 placeholder-transparent focus:ring-0"
+              placeholder="—">
+            <label for="estado" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-gray-500">Estado</label>
+          </div>
+
+          <div class="relative">
+            <input id="ciudad" type="text" readonly
+              class="peer w-full rounded-lg border border-dashed border-gray-300 bg-transparent px-4 py-3 placeholder-transparent focus:ring-0"
+              placeholder="—">
+            <label for="ciudad" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-gray-500">Ciudad</label>
+          </div>
+
+          <div class="relative">
+            <select id="municipio"
+              class="peer w-full rounded-lg border border-dashed border-gray-300 bg-transparent px-4 py-3 focus:border-mexico-green focus:ring-0"></select>
+            <label for="municipio"
+              class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-gray-500">Municipio</label>
+          </div>
+
+          <div class="relative">
+            <select id="colonia"
+              class="peer w-full rounded-lg border border-dashed border-gray-300 bg-transparent px-4 py-3 focus:border-mexico-green focus:ring-0"></select>
+            <label for="colonia" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-gray-500">Colonia</label>
+          </div>
+
+          <button type="submit"
+            class="w-full rounded-lg bg-mexico-green py-3 font-semibold text-white transition hover:bg-mexico-red">Enviar</button>
+        </form>
+
+        <p id="error" class="mt-6 hidden text-center text-sm text-red-600">CP no encontrado</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        const t = document.getElementById(b.dataset.target)
+        if (!t) return
+        navigator.clipboard.writeText(t.innerText.trim())
+        b.innerHTML = '<i class="fa-solid fa-check text-mexico-green"></i>'
+        setTimeout(() => b.innerHTML = '<i class="fa-regular fa-copy"></i>', 2000)
+      })
+    })
+    async function onCP(e) {
+      const v = e.target.value
+      if (v.length === 5) {
+        const res = await fetch(`/api/codigo-postal/${v}`)
+        if (!res.ok) { error.classList.remove('hidden'); return }
+        const data = await res.json()
+        error.classList.add('hidden')
+        estado.value = data[0].d_estado
+        ciudad.value = data[0].d_ciudad
+        const m = [...new Set(data.map(x => x.D_mnpio))]
+        municipio.innerHTML = m.map(o => `<option>${o}</option>`).join('')
+        colonia.innerHTML = data.map(x => `<option>${x.d_asenta}</option>`).join('')
+      }
+      else {
+        estado.value = ''
+        ciudad.value = ''
+        municipio.innerHTML = ''
+        colonia.innerHTML = ''
+      }
+    }
+    cp.addEventListener('input', onCP)
+  </script>
+
+  <section id="examples" class="py-20 bg-gray-100">
     <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ejemplos de Uso</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ejemplos de uso</h2>
       <div class="grid lg:grid-cols-2 gap-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
           <div class="bg-gray-800 text-white px-6 py-4 font-semibold">Buscar por Código Postal</div>
@@ -213,9 +313,11 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
       <p>&copy; 2025 México API – Open Source Project</p>
       <div class="flex space-x-6 text-xl m-2">
-        <a title="GitHub" href="https://github.com/aleff-eco/mexico-api" target="_blank" rel="noopener" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
+        <a title="GitHub" href="https://github.com/aleff-eco/mexico-api" target="_blank" rel="noopener"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
             class="fa-brands fa-github"></i></a>
-        <a title="Portafolio Aleff Espinosa Córdova" href="https://devaleff.com" target="_blank" rel="noopener" class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
+        <a title="Portafolio Aleff Espinosa Córdova" href="https://devaleff.com" target="_blank" rel="noopener"
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105"><i
             class="fa-solid fa-link"></i></a>
       </div>
     </div>

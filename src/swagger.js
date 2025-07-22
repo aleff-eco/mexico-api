@@ -190,7 +190,9 @@ export const swaggerSpec = {
                     type: "object",
                     properties: {
                       d_ciudad: { type: "string" },
-                      c_cve_ciudad: { type: "string" },
+                      d_estado: { type: "string" },
+                      D_mnpio: { type: "string" },
+                      d_codigo: { type: "string" },
                     },
                   },
                 },
@@ -281,5 +283,5 @@ export const swaggerSpec = {
 };
 
 export function setupSwagger(app) {
-  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }

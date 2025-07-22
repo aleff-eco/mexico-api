@@ -4,7 +4,7 @@ import { listUnique, searchByField } from '../controllers/queryController.js';
 const router = express.Router();
 
 // Columnas que se enviaran en el response
-const exportFields = ['d_ciudad', 'c_cve_ciudad'];
+const exportFields = ['d_ciudad', 'd_estado', 'D_mnpio', 'd_codigo'];
 
 // GET /api/ciudad/ > lista de ciudades únicas
 router.get('/', (req, res) => {
