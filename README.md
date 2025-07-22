@@ -1,3 +1,5 @@
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=aleff-eco.mexico-api" />
+
 # México API | Aleff Espinosa Cordova
 
 API REST para consultar códigos postales de México, basada en el catálogo oficial de SEPOMEX. Permite buscar por estado, municipio, ciudad, colonia y código postal con endpoints optimizados y respuestas en JSON.
