@@ -7,10 +7,10 @@ const router = express.Router();
 const exportFields = ['d_ciudad', 'd_estado', 'D_mnpio', 'd_codigo'];
 
 // GET /api/ciudad/ > lista de ciudades únicas
-router.get('/', (req, res) => {
+router.get('/', (_, res) => {
   try {
-    const ciudades = listUnique('d_ciudad');
-    res.json(ciudades);
+    const results = listUnique('d_ciudad');
+    res.json(results);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error al obtener ciudades únicas.' });
@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 // GET /api/ciudad/:query > búsqueda por incidencia, mínimo 4 caracteres
 router.get('/:query', (req, res) => {
   try {
-    const resultados = searchByField('d_ciudad', req.params.query, exportFields);
-    res.json(resultados);
+    const results = searchByField('d_ciudad', req.params.query, exportFields);
+    res.json(results);
   } catch (err) {
     // err.code es 400 si la búsqueda es muy corta, o 404 si no hay resultados
     res.status(err.code || 500).json({ message: err.message });

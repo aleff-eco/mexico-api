@@ -14,10 +14,10 @@ const exportFields = [
 ];
 
 // GET /api/municipio/ > lista de municipios únicos
-router.get('/', (req, res) => {
+router.get('/', (_, res) => {
   try {
-    const municipios = listUnique('D_mnpio');
-    res.json(municipios);
+    const results = listUnique('D_mnpio');
+    res.json(results);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error al obtener lista de municipios.' });
@@ -27,8 +27,8 @@ router.get('/', (req, res) => {
 // GET /api/municipio/:query > búsqueda por incidencia, mínimo 4 caracteres
 router.get('/:query', (req, res) => {
   try {
-    const resultados = searchByField('D_mnpio', req.params.query, exportFields);
-    res.json(resultados);
+    const results = searchByField('D_mnpio', req.params.query, exportFields);
+    res.json(results);
   } catch (err) {
     res.status(err.code || 500).json({ message: err.message });
   }
