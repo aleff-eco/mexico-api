@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import estadosRoutes from "./routes/estados.js";
-import ciudadesRoutes from "./routes/ciudades.js";
-import municipiosRoutes from "./routes/municipios.js";
-import coloniasRoutes from "./routes/colonias.js";
-import codigosRoutes from "./routes/codigos.js";
 import path from 'path';
+import statesRoutes from "./routes/states.js";
+import citiesRoutes from "./routes/cities.js";
+import municipalitiesRoutes from "./routes/municipalities.js";
+import coloniesRoutes from "./routes/colonies.js";
+import codesRoutes from "./routes/codes.js";
 
 import { setupSwagger } from './swagger.js';
 
@@ -17,11 +17,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/estado", estadosRoutes);
-app.use("/api/ciudad", ciudadesRoutes);
-app.use("/api/municipio", municipiosRoutes);
-app.use("/api/colonia", coloniasRoutes);
-app.use("/api/codigo-postal", codigosRoutes);
+app.use("/api/estado", statesRoutes);
+app.use("/api/ciudad", citiesRoutes);
+app.use("/api/municipio", municipalitiesRoutes);
+app.use("/api/colonia", coloniesRoutes);
+app.use("/api/codigo-postal", codesRoutes);
 
 
 // app.get("/", (req, res) => {
