@@ -1,5 +1,4 @@
 <img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=aleff-eco.mexico-api" />
-
 # México API | Aleff Espinosa Cordova
 
 API REST para consultar códigos postales de México, basada en el catálogo oficial de SEPOMEX. Permite buscar por estado, municipio, ciudad, colonia y código postal con endpoints optimizados y respuestas en JSON.
@@ -49,21 +48,19 @@ GET /api/codigo-postal/29000
 ```bash
 mexico-api/
 ├── public/
-├── ├── files/
-│   │   ├── CPdescarga.xml       # Catálogo completo en formato XML
-│   │   └── CPdescarga.txt       # Catálogo en TXT para parsear
-│   ├── favicon.ico
-│   ├── index.html
-│   └── og-image.png 
+│   ├── CPdescarga.xml       # Catálogo completo en formato XML
+│   └── CPdescarga.txt       # Catálogo en TXT para parsear
 ├── scripts/
 │   ├── parse-xml.js         # Convierte XML a JSON
-│   └── parse-txt.js         # Convierte TXT a JSON
+│   ├── parse-txt.js         # Convierte TXT a JSON
+│   └── init-db.js           # Genera una base de datos SQLite a partir de data.json
 ├── src/
 │   ├── app.js               # Configuración y arranque de Express
 │   ├── lib/
 │   │   └── normalize.js     # Función para quitar acentos y normalizar
 │   ├── db/
-│   │   └── data.json        # JSON con los registros actualizados a julio 2025
+│   │   ├── data.json        # JSON con los registros actualizados a julio 2025
+│   │   └── mexico.db        # Base de datos SQLite generada
 │   ├── routes/
 │   │   ├── estados.js
 │   │   ├── municipios.js
@@ -71,8 +68,6 @@ mexico-api/
 │   │   ├── colonias.js
 │   │   └── codigos.js
 │   └── swagger.js           # Configuración de Swagger/OpenAPI
-├── .gitignore
-├── .env.example             # Ejemplo de variables de entorno
 ├── package.json
 └── README.md
 ```
@@ -95,45 +90,34 @@ cd mexico-api
 
 # Instala dependencias
 npm install
+
+# Genera la base de datos SQLite
+npm run init-db
+
+# Copia el ejemplo de variables de entorno
+cp .env.example .env
 ```
 
-1. Copia `.env.example` a `.env` y define:
-   ```ini
-   PORT=3000
-   ```
+Define al menos la variable de puerto en tu `.env`:
+
+```ini
+PORT=3000
+```
 
 ---
 
 ## 🗄️ Actualizar datos
 
-Busca por actualizaciones directamente en el portal de correos de México.
-<https://www.correosdemexico.gob.mx/sslservicios/consultacp/CodigoPostal_Exportar.aspx>
-<https://www.portal.correosdemexico.com.mx/portal/index.php/envio/consulta-de-codigo-postal>
-
-Ubica el archivo dentro de la carpeta "./public/files"
+Para actualizar los datos del catálogo, descarga la última versión de SEPOMEX y coloca los archivos dentro de `./public` como `CPdescarga.xml` o `CPdescarga.txt`. A continuación ejecuta el script correspondiente para generar `src/db/data.json`:
 
 ```bash
-mexico-api/
-├── public/
-├── ├── files/
-│   │   ├── CPdescarga.xml
-│   │   └── CPdescarga.txt
-
-. . . 
-
-```
-
-### Usando XML
-```bash
+# Usando XML
 npm run parse-xml
-```
 
-### Usando TXT
-```bash
+# Usando TXT
 npm run parse-txt
 ```
 
-Ambos comandos generan `src/db/data.json` con los registros.
 
 ---
 
@@ -150,18 +134,29 @@ El servidor escuchará en `http://localhost:${process.env.PORT || 3000}`.
 ## 📡 Endpoints disponibles
 
 - `GET /api/codigo-postal/:cp` → Busca código postal exacto
+- `GET /api/bbox/:estado` → Retorna el bounding box (coordenadas geográficas) de un estado.
 - `GET /api/estado/` → Lista de estados únicos
-- `GET /api/estado/:query` → Busca estados por término
-- `GET /api/municipio/` y `/api/municipio/:query`
-- `GET /api/ciudad/` y `/api/ciudad/:query`
-- `GET /api/colonia/` y `/api/colonia/:query`
+- `GET /api/estado/:query` → Busca estados por término. Soporta `?page` y `?per_page` para paginación.
+- `GET /api/municipio/` y `/api/municipio/:query` → Busca municipios por término. Soporta `?page` y `?per_page` para paginación.
+- `GET /api/ciudad/` y `/api/ciudad/:query` → Busca ciudades por término. Soporta `?page` y `?per_page` para paginación.
+- `GET /api/colonia/` y `/api/colonia/:query` → Busca colonias por término. Soporta `?page` y `?per_page` para paginación.
 - `GET /docs` → Documentación Swagger UI interactiva
+
+--- 
+
+## Ejemplo de uso
+```bash
+curl -X GET "http://localhost:3000/api/codigo-postal/29000" # Obtiene información del código postal 29000
+curl -X GET "http://localhost:3000/api/estado?page=1&per_page=10" # Lista los primeros 10 estados
+curl -X GET "http://localhost:3000/api/municipio/tuxtla" # Busca municipios que contengan "tuxtla"
+curl -X GET "http://localhost:3000/api/bbox/Chiapas" # Obtiene el bounding box de Chiapas
+```
 
 ---
 
 ## 📖 Documentación
 
-La documentación interactiva está disponible en `/docs` via Swagger UI.
+La documentación interactiva está disponible en `/docs` vía Swagger UI.
 
 ---
 

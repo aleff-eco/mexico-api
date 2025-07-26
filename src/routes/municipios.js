@@ -3,7 +3,7 @@ import { listUnique, searchByField } from '../controllers/queryController.js';
 
 const router = express.Router();
 
-// Columnas que se enviaran en el response
+// Columnas que se enviarán en el response
 const exportFields = [
   'd_codigo',
   'd_estado',
@@ -14,9 +14,9 @@ const exportFields = [
 ];
 
 // GET /api/municipio/ > lista de municipios únicos
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const municipios = listUnique('D_mnpio');
+    const municipios = await listUnique('D_mnpio');
     res.json(municipios);
   } catch (err) {
     console.error(err);
@@ -25,9 +25,15 @@ router.get('/', (req, res) => {
 });
 
 // GET /api/municipio/:query > búsqueda por incidencia, mínimo 4 caracteres
-router.get('/:query', (req, res) => {
+router.get('/:query', async (req, res) => {
   try {
-    const resultados = searchByField('D_mnpio', req.params.query, exportFields);
+    const { page, per_page } = req.query;
+    const resultados = await searchByField(
+    'D_mnpio', 
+    req.params.query, 
+    exportFields,
+    { page, perPage: per_page }
+  );
     res.json(resultados);
   } catch (err) {
     res.status(err.code || 500).json({ message: err.message });

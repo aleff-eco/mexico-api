@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import bboxRoutes from "./routes/bbox.js";
 import estadosRoutes from "./routes/estados.js";
 import ciudadesRoutes from "./routes/ciudades.js";
 import municipiosRoutes from "./routes/municipios.js";
@@ -22,11 +23,11 @@ app.use("/api/ciudad", ciudadesRoutes);
 app.use("/api/municipio", municipiosRoutes);
 app.use("/api/colonia", coloniasRoutes);
 app.use("/api/codigo-postal", codigosRoutes);
+app.use("/api/bbox", bboxRoutes);
 
-
-// app.get("/", (req, res) => {
-//   res.json({ message: "Mexico API Activa"});
-// });
+app.get("/", (req, res) => {
+  res.json({ message: "Mexico API Activa"});
+});
 
 app.use('/', express.static(path.join(process.cwd(), 'public')));
 
@@ -35,7 +36,5 @@ setupSwagger(app);
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en puerto ${PORT}`);
 });
-
-
 
 // ALEFF ESPINOSA CORDOVA
