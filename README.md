@@ -3,6 +3,9 @@
 
 API REST para consultar códigos postales de México, basada en el catálogo oficial de SEPOMEX. Permite buscar por estado, municipio, ciudad, colonia y código postal con endpoints optimizados y respuestas en JSON.
 
+**Sobre el sitio**
+[México - API](https://mexico-api.devaleff.com)
+
 **Sobre mí:** [devaleff.com](https://devaleff.com) | [aleff.vercel.app](https://aleff.vercel.app)
 
 ---
