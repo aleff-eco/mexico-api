@@ -25,7 +25,7 @@ app.use("/api/colonia", coloniasRoutes);
 app.use("/api/codigo-postal", codigosRoutes);
 app.use("/api/bbox", bboxRoutes);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({ message: "Mexico API Activa"});
 });
 

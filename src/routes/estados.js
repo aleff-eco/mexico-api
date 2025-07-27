@@ -9,7 +9,13 @@ const exportFields = ['d_codigo', 'd_estado', 'd_ciudad', 'D_mnpio'];
 // GET /api/estado/ > lista de estados únicos
 router.get('/', async (req, res) => {
   try {
-    const estados = await listUnique('d_estado');
+    const { page, per_page } = req.query;
+    const exportFields = ['d_estado', 'd_codigo'];
+    const estados = await listUnique(
+      'd_estado',
+      exportFields,
+      { page, perPage: per_page }
+    );
     res.json(estados);
   } catch (err) {
     console.error(err);

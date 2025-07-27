@@ -10,10 +10,8 @@ router.get('/:estado', async (req, res) => {
   try {
     const bbox = await getBboxByEstado(estado);
 
-    res.json({
-      estado,
-      bbox
-    });
+    res.json(bbox);
+    
   } catch (err) {
     console.error('Error en /api/bbox:', err);
     res.status(err.code || 500).json({ message: err.message });

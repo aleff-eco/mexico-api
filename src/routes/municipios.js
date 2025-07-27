@@ -16,7 +16,12 @@ const exportFields = [
 // GET /api/municipio/ > lista de municipios únicos
 router.get('/', async (req, res) => {
   try {
-    const municipios = await listUnique('D_mnpio');
+    const { page, per_page } = req.query;
+    const municipios = await listUnique(
+      'D_mnpio',
+      exportFields,
+      { page, perPage: per_page }
+    );
     res.json(municipios);
   } catch (err) {
     console.error(err);

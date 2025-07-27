@@ -9,7 +9,8 @@ const exportFields = ['d_asenta', 'd_tipo_asenta', 'D_mnpio', 'd_estado', 'd_ciu
 // GET /api/colonia/ > lista de colonias únicas
 router.get('/', async (req, res) => {
   try {
-    const colonias = await listUnique('d_asenta');
+    const { page, per_page } = req.query;
+    const colonias  = await listUnique('d_asenta', exportFields, { page, perPage: per_page });
     res.json(colonias);
   } catch (err) {
     console.error(err);

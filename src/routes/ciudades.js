@@ -9,7 +9,8 @@ const exportFields = ['d_ciudad', 'd_estado', 'D_mnpio', 'd_codigo'];
 // GET /api/ciudad/ > lista de ciudades únicas
 router.get('/', async (req, res) => {
   try {
-    const ciudades = await listUnique('d_ciudad');
+    const { page, per_page } = req.query;
+    const ciudades  = await listUnique('d_ciudad', exportFields, { page, perPage: per_page });
     res.json(ciudades);
   } catch (err) {
     console.error(err);
