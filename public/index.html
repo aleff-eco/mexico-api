@@ -83,7 +83,7 @@
         <a href="#features"
           class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Características</a>
         <a href="#address"
-          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Formulario</a> 
+          class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Formulario</a>
         <a href="#examples"
           class="hover:text-mexico-green transition-transform duration-300 hover:scale-105 hover:underline underline-offset-2">Ejemplos</a>
         <a href="#docs"
@@ -94,14 +94,14 @@
     <div class="w-full h-2 bg-mexico-green/[.55]"></div>
   </nav>
 
-  <header class="h-[80vh] content-center align-middle max-w-7xl mx-auto px-4 text-center">
+  <header class="h-[90dvh] content-center align-middle max-w-7xl mx-auto px-4 text-center">
     <h1 class="text-4xl md:text-6xl font-bold mb-3 text-gray-800 tracking-wide">MÉXICO API</h1>
     <h3
       class="text-sm font-light mb-3 font-gray-100 transition-transform duration-300 hover:scale-105 hover:underline underline-offset-4">
       Por: Aleff Espinosa Cordova</h3>
     <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Consulta Códigos Postales de México de forma rápida y precisa.
       Obtén información detallada sobre estados, municipios, ciudades y colonias.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <div class="flex flex-col sm:flex-row gap-6 justify-center">
       <a href="#docs"
         class="bg-mexico-green text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105">
         <i class="fa-solid fa-book-open"></i> Documentación
@@ -112,13 +112,14 @@
       </a>
       <a href="https://devaleff.com" target="_blank" rel="noopener"
         class="bg-aleff-azul text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-105">
-        <i class="fa-solid fa-globe"></i> Portafolio
+        <img src="https://www.devaleff.com/logo.gif" alt="Logo de Devaleff"
+          class="inline-block w-6 h-6 mr-2 align-text-bottom" />Portafolio
       </a>
     </div>
   </header>
 
   <section id="features" class="py-24 bg-gray-100">
-    <div class="max-w-[80dvw] mx-auto px-4">
+    <div class="max-w-[80dvw] mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Características</h2>
       <div class="grid md:grid-cols-4 gap-6 text-center">
         <div class="bg-white p-8 rounded-lg shadow-lg space-y-4 transition-transform duration-300 hover:scale-105">
@@ -147,12 +148,25 @@
     </div>
   </section>
 
-  <section id="address" class="py-24">
+  <section class="bg-gray-50 py-24">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Por qué usar México API?</h2>
+      <p class="text-xl mb-8 max-w-3xl mx-auto px-4">México API es una herramienta poderosa para desarrolladores y
+        organizaciones que necesitan acceder a datos de <span class="font-semibold">códigos postales, cuadros
+          delimitadores de estados (Bbox), estados, municipios, ciudades y colonias de México.</span>
+        Con una API REST rápida y fácil de usar, puedes integrar información geográfica precisa en tus aplicaciones y
+        servicios.</p>
+    </div>
+  </section>
+
+  <section id="address" class="pb-24">
     <div class="max-w-lg mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">Formulario de pruebas</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Búsca y pruéba.</h2>
+      <p class="text-center text-gray-500 mb-8">Ingresa un Código Postal para obtener información geográfica.</p>
       <div class="rounded-2xl border border-gray-200 bg-white/90 backdrop-blur shadow-xl p-10">
-        <p class="text-center text-gray-600 font-semibold mb-6">MÉXICO API</p>
-        <form class="grid gap-8">
+        <p class="text-center text-gray-600 font-semibold pb-4">MÉXICO API</p>
+        <p id="error" class="hidden text-center text-sm text-red-600"></p>
+        <form class="grid gap-8 pt-6">
           <div class="relative">
             <input id="cp" type="text" minlength="5" maxlength="5" pattern="[0-9]{5}" required
               class="peer w-full rounded-lg border border-gray-300 px-4 py-3 placeholder-transparent focus:border-mexico-green focus:ring-0"
@@ -188,46 +202,52 @@
             <label for="colonia" class="absolute left-4 -top-2.5 bg-white px-1 text-xs text-gray-500">Colonia</label>
           </div>
 
-          <button type="submit"
+          <button type="submit" href="#address"
             class="w-full rounded-lg bg-mexico-green py-3 font-semibold text-white transition hover:bg-mexico-red">Enviar</button>
         </form>
-
-        <p id="error" class="mt-6 hidden text-center text-sm text-red-600">CP no encontrado</p>
       </div>
     </div>
   </section>
-
   <script>
-    document.querySelectorAll('.copy-btn').forEach(b => {
-      b.addEventListener('click', () => {
-        const t = document.getElementById(b.dataset.target)
-        if (!t) return
-        navigator.clipboard.writeText(t.innerText.trim())
-        b.innerHTML = '<i class="fa-solid fa-check text-mexico-green"></i>'
-        setTimeout(() => b.innerHTML = '<i class="fa-regular fa-copy"></i>', 2000)
-      })
-    })
-    async function onCP(e) {
-      const v = e.target.value
-      if (v.length === 5) {
-        const res = await fetch(`/api/codigo-postal/${v}`)
-        if (!res.ok) { error.classList.remove('hidden'); return }
-        const data = await res.json()
-        error.classList.add('hidden')
-        estado.value = data[0].d_estado
-        ciudad.value = data[0].d_ciudad
-        const m = [...new Set(data.map(x => x.D_mnpio))]
-        municipio.innerHTML = m.map(o => `<option>${o}</option>`).join('')
-        colonia.innerHTML = data.map(x => `<option>${x.d_asenta}</option>`).join('')
-      }
-      else {
-        estado.value = ''
-        ciudad.value = ''
-        municipio.innerHTML = ''
-        colonia.innerHTML = ''
-      }
-    }
-    cp.addEventListener('input', onCP)
+      (function () {
+        const $ = id => document.getElementById(id);
+        const cp = $('cp'), est = $('estado'), cdd = $('ciudad'), mun = $('municipio'), col = $('colonia'), err = $('error');
+        const clear = () => {
+          err.classList.add('hidden');
+          err.textContent = '';
+          [est, cdd].forEach(i => i.value = '');
+          [mun, col].forEach(i => i.innerHTML = '');
+        };
+
+        cp.addEventListener('input', async () => {
+          const v = cp.value.trim();
+          if (v.length !== 5) return clear();
+          clear();
+
+          try {
+            const res = await fetch(`/api/codigo-postal/${v}`);
+            const json = await res.json();
+            if (!res.ok) {
+              throw new Error(json.message || 'Error desconocido');
+            }
+            const { data = [] } = json;
+            if (!data.length) {
+              throw new Error('CP no encontrado en datos');
+            }
+            est.value = data[0].d_estado;
+            cdd.value = data[0].d_ciudad;
+            mun.innerHTML = [...new Set(data.map(x => x.D_mnpio))]
+              .map(m => `<option>${m}</option>`).join('');
+            col.innerHTML = data
+              .map(x => `<option>${x.d_asenta}</option>`)
+              .join('');
+          } catch (e) {
+            err.textContent = e.message;
+            err.classList.remove('hidden');
+          }
+        });
+
+      })();
   </script>
 
   <section id="examples" class="py-20 bg-gray-100">
@@ -235,64 +255,82 @@
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ejemplos de uso</h2>
       <div class="grid lg:grid-cols-2 gap-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">Buscar por Código Postal</div>
+          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">
+            Buscar por Código Postal
+          </div>
           <div class="p-6">
-            <pre class="bg-gray-100 p-4 rounded overflow-x-auto">
-<code>GET https://mexico-api.devaleff.com/api/codigo-postal/06600
-[
-  {
-    "d_codigo": "06600",
-    "d_estado": "Ciudad de México",
-    "d_ciudad": "Ciudad de México",
-    "d_asenta": "Juárez",
-    "D_mnpio": "Cuauhtémoc",
-    "d_tipo_asenta": "Colonia"
-  }
-]
-</code>
-            </pre>
+            <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>GET https://mexico-api.devaleff.com/api/codigo-postal/06600
+
+{
+  "meta": {
+    "page": 1,
+    "per_page": (ILIMITADO),
+    "total": 1,
+    "total_pages": 1
+  },
+  "data": [
+    {
+      "d_codigo": "06600",
+      "d_estado": "Ciudad de México",
+      "d_ciudad": "Ciudad de México",
+      "d_asenta": "Juárez",
+      "D_mnpio": "Cuauhtémoc",
+      "d_tipo_asenta": "Colonia"
+    }
+  ]
+}
+</code></pre>
           </div>
         </div>
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">Buscar por Colonia</div>
+          <div class="bg-gray-800 text-white px-6 py-4 font-semibold">
+            Buscar por Colonia (paginado)
+          </div>
           <div class="p-6">
-            <pre class="bg-gray-100 p-4 rounded overflow-x-auto">
-<code>GET https://mexico-api.devaleff.com/api/colonia/condesa
-[
-  {
-    "d_asenta": "Condesa",
-    "d_tipo_asenta": "Colonia",
-    "D_mnpio": "Cuauhtémoc",
-    "d_estado": "Ciudad de México",
-    "d_ciudad": "Ciudad de México",
-    "d_codigo": "06140"
-  },
-  {
-    "d_asenta": "Hipódromo Condesa",
-    "d_tipo_asenta": "Colonia",
-    "D_mnpio": "Cuauhtémoc",
-    "d_estado": "Ciudad de México",
-    "d_ciudad": "Ciudad de México",
-    "d_codigo": "06170"
-  },
-  {
-    "d_asenta": "Parque Industrial Condesa",
-    "d_tipo_asenta": "Zona industrial",
-    "D_mnpio": "Mexicali",
-    "d_estado": "Baja California",
-    "d_ciudad": "Mexicali",
-    "d_codigo": "21395"
-  }, ...
-]
-</code>
-            </pre>
+            <pre class="bg-gray-100 p-4 rounded overflow-x-auto"><code>GET https://mexico-api.devaleff.com/api/colonia/condesa?page=1&amp;per_page=10
+
+{
+	"meta": {
+		"page": 1,
+		"per_page": 3,
+		"total": 46,
+		"total_pages": 10
+	},
+	"data": [
+		{
+			"d_asenta": "Condesa",
+			"d_tipo_asenta": "Colonia",
+			"D_mnpio": "Cuauhtémoc",
+			"d_estado": "Ciudad de México",
+			"d_ciudad": "Ciudad de México",
+			"d_codigo": "06140"
+		},
+		{
+			"d_asenta": "Hipódromo Condesa",
+			"d_tipo_asenta": "Colonia",
+			"D_mnpio": "Cuauhtémoc",
+			"d_estado": "Ciudad de México",
+			"d_ciudad": "Ciudad de México",
+			"d_codigo": "06170"
+		},
+		{
+			"d_asenta": "Parque Industrial Condesa",
+			"d_tipo_asenta": "Zona industrial",
+			"D_mnpio": "Mexicali",
+			"d_estado": "Baja California",
+			"d_ciudad": "Mexicali",
+			"d_codigo": "21395"
+		}
+	]
+}
+</code></pre>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="docs" class="bg-mexico-green text-white py-20 text-center h-[60vh] content-center">
+  <section id="docs" class="bg-mexico-green text-white py-20 text-center h-[70vh] content-center">
     <div class="max-w-7xl mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Empezamos?</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Consulta la documentación completa, visita el repositorio y comienza a
@@ -306,6 +344,33 @@
         class="m-2 bg-white text-mexico-green font-bold py-3 px-8 rounded-lg inline-flex items-center gap-2 transition-transform duration-300 hover:scale-105">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Contribuidores</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <a href="https://github.com/aleff-eco" target="_blank" rel="noopener"
+          class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col items-center gap-4">
+          <img src="https://github.com/aleff-eco.png" alt="Avatar Aleff"
+            class="w-20 h-20 rounded-full border-2 border-mexico-green" />
+          <h3 class="text-lg font-semibold text-gray-800">Aleff Espinosa Cordova</h3>
+          <div class="inline-flex items-center text-mexico-green font-medium">
+            <i class="fa-brands fa-github mr-2"></i> @aleff-eco
+          </div>
+        </a>
+
+        <a href="https://github.com/4DRIAN0RTIZ" target="_blank" rel="noopener"
+          class="bg-white rounded-2xl shadow hover:shadow-lg transition p-6 flex flex-col items-center gap-4">
+          <img src="https://github.com/4DRIAN0RTIZ.png" alt="Avatar Adrián"
+            class="w-20 h-20 rounded-full border-2 border-mexico-green" />
+          <h3 class="text-lg font-semibold text-gray-800">Adrian Ortiz</h3>
+          <div class="inline-flex items-center text-mexico-green font-medium">
+            <i class="fa-brands fa-github mr-2"></i> @4DRIAN0RTIZ
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 

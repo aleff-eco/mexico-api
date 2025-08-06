@@ -8,14 +8,16 @@
     "dev": "nodemon src/app.js",
     "start": "node src/app.js",
     "parse-xml": "node scripts/parse-xml.js",
-    "parse-txt": "node scripts/parse-txt.js"
+    "parse-txt": "node scripts/parse-txt.js",
+    "init-db": "node scripts/init-db.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "iconv-lite": "^0.6.3",
-    "sqlite3": "^5.1.6",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "xml2js": "^0.4.23"
